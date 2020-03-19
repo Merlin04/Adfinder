@@ -15,11 +15,11 @@ namespace Preprocessor
         {
             Console.WriteLine("Adfinder Preprocessor v0.1");
             Console.WriteLine("Getting all articles with a promotional tone..."); 
-            //await GetArticlesInCategory("Category:All articles with a promotional tone", "Promotional");
-            await GetArticlesInCategory("Category:Aalborg University alumni‏‎", "Promotional");
+            await GetArticlesInCategory("Category:All articles with a promotional tone", "Promotional");
+            //await GetArticlesInCategory("Category:Aalborg University alumni‏‎", "Promotional");
             Console.WriteLine("Getting all good articles...");
-            //await GetArticlesInCategory("Category:Good articles", "Good");
-            await GetArticlesInCategory("Category:Aalenian taxonomic families", "Good");
+            await GetArticlesInCategory("Category:Good articles", "Good");
+            //await GetArticlesInCategory("Category:Aalenian taxonomic families", "Good");
             Console.WriteLine("Done - Statistics:");
             Fm.PrintStatistics();
         }
