@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Preprocessor", "Preprocesso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLNETFormatter", "MLNETFormatter\MLNETFormatter.csproj", "{4DEF04C7-5D69-4186-99D1-E71B780B1B27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLModel", "MLModel\MLModel.csproj", "{15CE01DB-A7D6-4379-AE9E-10C93F1DFE54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{78F7BE30-E806-4065-BEB7-7DC4C5CAB409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelAccess", "ModelAccess\ModelAccess.csproj", "{B7252D5C-4D25-4119-B168-A13DFF13982E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15CE01DB-A7D6-4379-AE9E-10C93F1DFE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15CE01DB-A7D6-4379-AE9E-10C93F1DFE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15CE01DB-A7D6-4379-AE9E-10C93F1DFE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15CE01DB-A7D6-4379-AE9E-10C93F1DFE54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78F7BE30-E806-4065-BEB7-7DC4C5CAB409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78F7BE30-E806-4065-BEB7-7DC4C5CAB409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78F7BE30-E806-4065-BEB7-7DC4C5CAB409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78F7BE30-E806-4065-BEB7-7DC4C5CAB409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7252D5C-4D25-4119-B168-A13DFF13982E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7252D5C-4D25-4119-B168-A13DFF13982E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7252D5C-4D25-4119-B168-A13DFF13982E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7252D5C-4D25-4119-B168-A13DFF13982E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
