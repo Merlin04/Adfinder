@@ -1,6 +1,7 @@
 # Adfinder
 
 Tool to identify Wikipedia articles that might have a promotional bias.
+![.NET Core](https://github.com/Merlin04/Adfinder/workflows/.NET%20Core/badge.svg)
 
 ## Code overview
 
