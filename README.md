@@ -1,6 +1,7 @@
 # Adfinder
 
 Tool to identify Wikipedia articles that might have a promotional bias.
+
 ![.NET Core](https://github.com/Merlin04/Adfinder/workflows/.NET%20Core/badge.svg)
 
 ## Code overview
@@ -23,3 +24,7 @@ The GitHub repository includes a pre-trained model, but if you would like to re-
 4. Run `mlnet auto-train --task binary-classification --dataset "your-dataset-tsv-file.tsv" --label-column-name "Category" --max-exploration-time 3600`, replacing 3600 with however much time you have (in seconds) for it to explore different algorithms. This will give you a new directory called "SampleBinaryClassification."
 5. If `mlnet` chose the `LightGBMBinary` algorithm, you can just replace the `MLModel.zip` file in the `MLModel` project with the new generated model file. However, if it did not choose this algorithm, you will need to update the `ModelBuilder.cs` file in the `ModelAccess` project with the new methods from the new `ModelBuilder.cs` file.
 6. `cd` to the `Adfinder` directory and run `dotnet publish --configuration Release`. To start the API, `cd` to `WebService/bin/Release/netcoreapp3.1` and run `./WebService`.
+
+## API
+
+By running `WebService`, you get an API at `https://localhost:5001/MLLookup` that you can post an `articleTitle` to. This will send back a score, with a lower value meaning it is more confident that the article is promotional.
