@@ -11,8 +11,12 @@ namespace MLNETFormatter
             // This program will take the folder outputted from Preprocessor and make it one file that can be used by ML.NET.
             // The argument is the path to the folder.
             
+            Console.WriteLine("Adfinder MLNETFormatter");
+            Console.WriteLine("Using dataset at " + args[0]);
             FileManagement fm = new FileManagement(args[0]);
-            using StreamWriter file = new StreamWriter(fm.GetOutputFilePath());
+            string outputFilePath = fm.GetOutputFilePath();
+            Console.WriteLine("Output file is " + outputFilePath);
+            using StreamWriter file = new StreamWriter(outputFilePath);
             file.WriteLine("Category\tExtracts");
             
             foreach (KeyValuePair<string, string> filePath in fm.GetFilesList())

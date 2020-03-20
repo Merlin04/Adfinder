@@ -35,7 +35,7 @@ namespace MLNETFormatter
             {
                 foreach (string filePath in Directory.GetFiles(categoryDirectoryPath))
                 {
-                    filesList.Add(filePath, categoryDirectoryPath.Split(Path.PathSeparator).Last());
+                    filesList.Add(filePath, categoryDirectoryPath.Split(Path.DirectorySeparatorChar).Last());
                 }
             }
             
