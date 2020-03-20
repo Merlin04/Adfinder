@@ -21,7 +21,7 @@ namespace MLNETFormatter
             
             foreach (KeyValuePair<string, string> filePath in fm.GetFilesList())
             {
-                file.WriteLine(filePath.Value + "\t" + fm.GetArticleExtracts(filePath.Key)
+                file.WriteLine((filePath.Value == "Promotional" ? "1" : "0") + "\t" + fm.GetArticleExtracts(filePath.Key)
                     .Replace("\n", " ")
                     .Replace("\t", ""));
             }
