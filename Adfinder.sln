@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Preprocessor", "Preprocessor\Preprocessor.csproj", "{38FD523D-8E74-4BAF-948A-5DB5CA740A7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLNETFormatter", "MLNETFormatter\MLNETFormatter.csproj", "{4DEF04C7-5D69-4186-99D1-E71B780B1B27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{38FD523D-8E74-4BAF-948A-5DB5CA740A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FD523D-8E74-4BAF-948A-5DB5CA740A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38FD523D-8E74-4BAF-948A-5DB5CA740A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DEF04C7-5D69-4186-99D1-E71B780B1B27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
