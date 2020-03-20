@@ -41,8 +41,7 @@ namespace WebService.Controllers
             string response = await Client.GetStringAsync("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&generator=allpages&exlimit=1&explaintext=1&gapfrom="
                                                           + pageName.Replace(" ", "%20") + "&gaplimit=1");
             JObject o = JObject.Parse(response);
-
-            return o["query"]["pages"].First()["extract"].ToString()
+            return o["query"]["pages"].First().First()["extract"].ToString()
                 .Replace("\n", " ")
                 .Replace("\t", "");
         }
