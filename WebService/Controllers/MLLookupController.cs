@@ -16,7 +16,7 @@ namespace WebService.Controllers
     public class MLLookupController : ControllerBase
     {
         private readonly ILogger<MLLookupController> _logger;
-        private Access _access;
+        private readonly Access _access;
         private static readonly HttpClient Client = new HttpClient();
 
         public MLLookupController(ILogger<MLLookupController> logger)
@@ -42,7 +42,7 @@ namespace WebService.Controllers
                                                           + pageName.Replace(" ", "%20") + "&gaplimit=1");
             JObject o = JObject.Parse(response);
 
-            return o["query"]?["pages"]?[0]?["extract"]?.ToString()
+            return o["query"]["pages"].First()["extract"].ToString()
                 .Replace("\n", " ")
                 .Replace("\t", "");
         }
