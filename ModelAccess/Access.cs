@@ -16,7 +16,7 @@ namespace ModelAccess
     public class Access
     {
         //Machine Learning model to load and use for predictions
-        private const string ModelFilepath = @"../MLModel/MLModel.zip";
+        private const string ModelFilepath = @"../../../../MLModel/MLModel.zip";
 
         private readonly PredictionEngine<ModelInput, ModelOutput> _predEngine; 
 
