@@ -71,7 +71,7 @@ function addPopup() {
     sr.append(popupDiv);
 }
 
-$.post("https://localhost:5001/MLLookup", {articleTitle: $('#firstHeading').text()}, data => {
+$.post("https://adfinder.benjaminsmith.dev/MLLookup", {articleTitle: $('#firstHeading').text()}, data => {
     console.log(data);
     addPopup();
 });

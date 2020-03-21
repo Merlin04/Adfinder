@@ -13,7 +13,6 @@ namespace WebService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [EnableCors("ApiPolicy")]
     // ReSharper disable once InconsistentNaming
     public class MLLookupController : ControllerBase
     {

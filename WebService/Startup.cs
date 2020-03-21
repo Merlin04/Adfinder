@@ -27,7 +27,7 @@ namespace WebService
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("ApiPolicy",
+                options.AddDefaultPolicy(
                     builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); });
             });
             services.AddControllers();
