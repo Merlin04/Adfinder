@@ -5,6 +5,8 @@ Tool to identify Wikipedia articles that might have a promotional bias.
 
 ## Code overview
 
+There are two main parts to this repository. The first is the backend.
+
 There are 5 projects in the solution:
 
  - Preprocessor: Get all of the articles for the dataset and store them as JSON files.
@@ -12,6 +14,8 @@ There are 5 projects in the solution:
  - WebService: Run an API where you send the article content to it and get back whether or not it is promotional, along with a confidence score.
  - ModelAccess: Contains all of the logic for getting predictions from the model.
  - MLModel: Contains the ModelInput and ModelOutput classes, as well as the model zip file.
+
+The second part of this repository is a Firefox extension, which is currently a work in progress.
 
 ## Usage
 
