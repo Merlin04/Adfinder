@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ModelAccess;
@@ -12,6 +13,7 @@ namespace WebService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("ApiPolicy")]
     // ReSharper disable once InconsistentNaming
     public class MLLookupController : ControllerBase
     {
