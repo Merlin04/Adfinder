@@ -1,0 +1,30 @@
+--- WebService/Startup.cs	2020-03-21 19:55:32.597096922 -0700
++++ Startup-Server.cs	2020-03-22 10:50:17.567496695 -0700
+@@ -10,6 +10,7 @@
+ using Microsoft.Extensions.DependencyInjection;
+ using Microsoft.Extensions.Hosting;
+ using Microsoft.Extensions.Logging;
++using Microsoft.AspNetCore.HttpOverrides;
+ 
+ namespace WebService
+ {
+@@ -45,6 +46,12 @@
+ 
+             app.UseRouting();
+ 
++app.UseForwardedHeaders(new ForwardedHeadersOptions
++{
++    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
++});
++
++
+             app.UseCors();
+             
+             app.UseAuthorization();
+@@ -52,4 +59,4 @@
+             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+         }
+     }
+-}
+\ No newline at end of file
++}
