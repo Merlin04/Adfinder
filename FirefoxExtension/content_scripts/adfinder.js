@@ -1,4 +1,4 @@
-function addPopup() {
+function addPopup(score) {
     var srContainer = document.createElement("div");
     srContainer.id = "adfinder-shadow-container";
     srContainer.style = "position:fixed; top:0px; right:0px; z-index:9999;";
@@ -42,10 +42,18 @@ function addPopup() {
     var buttonsContainer = document.createElement("div");
     buttonsContainer.style = "text-align: right;";
 
-    var manageButton = document.createElement("div");
-    manageButton.classList = "ui mini button";
-    manageButton.innerText = "Manage warnings";
-    buttonsContainer.append(manageButton);
+    // var manageButton = document.createElement("div");
+    // manageButton.classList = "ui mini button";
+    // manageButton.innerText = "Manage warnings";
+    // buttonsContainer.append(manageButton);
+
+    var scoreText = document.createElement("span");
+    scoreText.classList = "ui small grey text";
+    scoreText.style = "font-family: Lato; margin-right: 1em; text-decoration-line: underline;";
+    scoreText.dataset.tooltip = "A higher number means a larger chance that the article is promotional.";
+    scoreText.dataset.variation = "fixed tiny";
+    scoreText.innerText = "Page score: " + Math.abs(score);
+    buttonsContainer.append(scoreText);
 
     var closeButton = document.createElement("div");
     closeButton.classList = "ui mini button";
@@ -73,5 +81,5 @@ function addPopup() {
 
 $.post("https://adfinder.benjaminsmith.dev/MLLookup", {articleTitle: $('#firstHeading').text()}, data => {
     console.log(data);
-    addPopup();
+    addPopup(data);
 });
