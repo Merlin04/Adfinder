@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MLModel.DataModels;
 using ModelAccess;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace WebService.Controllers
@@ -27,9 +29,10 @@ namespace WebService.Controllers
         }
 
         [HttpPost]
-        public async Task<float> Post(string articleTitle)
+        public async Task<string> Post(string articleTitle)
         {
-            return _access.Predict(await GetOneArticle(articleTitle));
+            ModelOutput output = _access.Predict(await GetOneArticle(articleTitle));
+            return JsonConvert.SerializeObject(output);
         }
         
         /// <summary>

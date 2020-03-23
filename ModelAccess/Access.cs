@@ -27,7 +27,7 @@ namespace ModelAccess
             _predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
         }
         
-        public float Predict(string extracts)
+        public ModelOutput Predict(string extracts)
         {
             // Create sample data to do a single prediction with it 
             //ModelInput data = CreateSingleDataSample(_mlContext, DATA_FILEPATH);
@@ -39,7 +39,7 @@ namespace ModelAccess
             ModelOutput predictionResult = _predEngine.Predict(data);
 
             //Console.WriteLine($"Single Prediction --> Actual value: {data.Category} | Predicted value: {predictionResult.Prediction}");
-            return (predictionResult.Prediction ? -1 : 1) * predictionResult.Score;
+            return predictionResult;
         }
 
         private static string GetAbsolutePath(string relativePath)

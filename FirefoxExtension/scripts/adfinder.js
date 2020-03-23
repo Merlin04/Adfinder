@@ -3,7 +3,7 @@ function addPopup(score) {
     srContainer.id = "adfinder-shadow-container";
     srContainer.style = "position:fixed; top:0px; right:0px; z-index:9999;";
     document.querySelector("html").append(srContainer);
-    var sr = srContainer.attachShadow({mode: "open"});
+    var sr = srContainer.attachShadow({ mode: "open" });
     var jqueryScript = document.createElement("script");
     jqueryScript.src = "https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js";
     sr.append(jqueryScript);
@@ -67,19 +67,37 @@ function addPopup(score) {
     // Close script
     var closeScript = document.createElement("script");
     closeScript.innerText = "" +
-    "var sr = document.getElementById('adfinder-shadow-container').shadowRoot;" +
-    "$(sr).ready(() => {" +
-    "    setTimeout(() => {$(sr.getElementById('adfinder-popup')).transition('fade');}, 500);" +
-    "    sr.getElementById('closeButton').addEventListener('click', () => {" +
-    "        $(sr.getElementById('adfinder-popup')).transition({animation: 'fade', onComplete: () => {document.getElementById('adfinder-shadow-container').outerHTML = '';}});" +
-    "    });" +
-    "});";
+        "var sr = document.getElementById('adfinder-shadow-container').shadowRoot;" +
+        "$(sr).ready(() => {" +
+        "    setTimeout(() => {$(sr.getElementById('adfinder-popup')).transition('fade');}, 500);" +
+        "    sr.getElementById('closeButton').addEventListener('click', () => {" +
+        "        $(sr.getElementById('adfinder-popup')).transition({animation: 'fade', onComplete: () => {document.getElementById('adfinder-shadow-container').outerHTML = '';}});" +
+        "    });" +
+        "});";
     popupDiv.append(closeScript);
 
     sr.append(popupDiv);
 }
 
-$.post("https://adfinder.benjaminsmith.dev/MLLookup", {articleTitle: $('#firstHeading').text()}, data => {
-    console.log(data);
-    addPopup(data);
-});
+browser.runtime.onMessage.addListener((data, sender) => {
+    if (data.message == "checkPopup") {
+        var pageTitle = document.getElementById("firstHeading").innerText;
+
+        // No need to check if the page isn't an article
+        if(
+            (pageTitle.slice(0, 5) == "Talk:") ||
+            (pageTitle.slice(0, 5) == "User:") ||
+            (pageTitle.slice(0, 10) == "User talk:") ||
+            (pageTitle.slice(0, 10) == "Wikipedia:") ||
+            (pageTitle.slice(0, 8) == "Special:")
+        ) {return;}
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://adfinder.benjaminsmith.dev/MLLookup?articleTitle=" + pageTitle, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send("{}");
+        xhr.onload = function () {
+            addPopup(JSON.parse(this.responseText)["Probability"]);
+        }
+    }
+})
