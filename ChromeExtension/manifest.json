@@ -1,0 +1,41 @@
+{
+  "description": "Tool to identify Wikipedia articles that might have a promotional bias using machine learning. The extension opens a popup when it detects that you are on a page with a promotional bias.",
+  "manifest_version": 2,
+  "name": "Adfinder",
+  "version": "1.0",
+  "homepage_url": "https://github.com/merlin04/Adfinder",
+  "icons": {
+    "48": "icons/adfinder-48.png",
+    "96": "icons/adfinder-96.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "https://adfinder.benjaminsmith.dev/*",
+    "webRequest"
+  ],
+  "browser_action": {
+    "default_icon": "icons/adfinder-32.png",
+    "theme_icons": [
+      {
+        "light": "icons/adfinder-32-light.png",
+        "dark": "icons/adfinder-32.png",
+        "size": 32
+      }
+    ],
+    "default_title": "Adfinder",
+    "default_popup": "popup/manage.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://en.wikipedia.org/wiki/*"],
+      "js": ["scripts/adfinder.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["scripts/background-script.js"]
+  },
+  "web_accessible_resources": [
+    "web_resources/*"
+  ]
+}
