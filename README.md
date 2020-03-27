@@ -16,7 +16,11 @@ There are 5 projects in the solution:
  - ModelAccess: Contains all of the logic for getting predictions from the model.
  - MLModel: Contains the ModelInput and ModelOutput classes, as well as the model zip file.
 
-The second part of this repository is a Firefox extension, which is currently a work in progress.
+The second part of this repository is a Firefox extension, which has three main parts:
+
+ - A background script that sends a message to the content script when the page finishes loading (it also handles loading the settings)
+ - A popup that opens when you click the icon in the browser toolbar and allows you to change the settings
+ - A content script that sends a POST to the API to get the score of the article and if necessary add the popup (the notification that the page is promotional, not the above item) to the page
 
 ## Usage
 
@@ -28,6 +32,8 @@ The GitHub repository includes a pre-trained model, but if you would like to re-
 4. Run `mlnet auto-train --task binary-classification --dataset "your-dataset-tsv-file.tsv" --label-column-name "Category" --max-exploration-time 3600`, replacing 3600 with however much time you have (in seconds) for it to explore different algorithms. This will give you a new directory called "SampleBinaryClassification."
 5. If `mlnet` chose the `LightGBMBinary` algorithm, you can just replace the `MLModel.zip` file in the `MLModel` project with the new generated model file. However, if it did not choose this algorithm, you will need to update the `ModelBuilder.cs` file in the `ModelAccess` project with the new methods from the new `ModelBuilder.cs` file.
 6. `cd` to the `Adfinder` directory and run `dotnet publish --configuration Release`. To start the API, `cd` to `WebService/bin/Release/netcoreapp3.1` and run `./WebService`.
+
+To help with developing the Firefox extension, I use Mozilla's `web-ext` tool. This will automatically reload the extension whenever you modify a file.
 
 ## API
 
