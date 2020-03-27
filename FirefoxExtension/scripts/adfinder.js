@@ -19,7 +19,7 @@ function addPopup(score) {
     // Create popup container
     var popupDiv = document.createElement("div");
     popupDiv.classList = "ui segment transition hidden";
-    popupDiv.style = "margin: 1rem;";
+    popupDiv.style = "margin: 1rem; display: none;";
     popupDiv.id = "adfinder-popup"
 
     // Create message
@@ -42,17 +42,12 @@ function addPopup(score) {
     var buttonsContainer = document.createElement("div");
     buttonsContainer.style = "text-align: right;";
 
-    // var manageButton = document.createElement("div");
-    // manageButton.classList = "ui mini button";
-    // manageButton.innerText = "Manage warnings";
-    // buttonsContainer.append(manageButton);
-
     var scoreText = document.createElement("span");
     scoreText.classList = "ui small grey text";
     scoreText.style = "font-family: Lato; margin-right: 1em; text-decoration-line: underline;";
-    scoreText.dataset.tooltip = "A higher number means a larger chance that the article is promotional.";
+    scoreText.dataset.tooltip = "A number closer to 1 means a larger chance that the article is promotional.";
     scoreText.dataset.variation = "fixed tiny";
-    scoreText.innerText = "Page score: " + Math.abs(score);
+    scoreText.innerText = "Page score: " + score.toFixed(3);
     buttonsContainer.append(scoreText);
 
     var closeButton = document.createElement("div");
@@ -69,7 +64,7 @@ function addPopup(score) {
     closeScript.innerText = "" +
         "var sr = document.getElementById('adfinder-shadow-container').shadowRoot;" +
         "$(sr).ready(() => {" +
-        "    setTimeout(() => {$(sr.getElementById('adfinder-popup')).transition('fade');}, 500);" +
+        "    setTimeout(() => {$(sr.getElementById('adfinder-popup')).transition('fade');}, 200);" +
         "    sr.getElementById('closeButton').addEventListener('click', () => {" +
         "        $(sr.getElementById('adfinder-popup')).transition({animation: 'fade', onComplete: () => {document.getElementById('adfinder-shadow-container').outerHTML = '';}});" +
         "    });" +
@@ -85,11 +80,12 @@ browser.runtime.onMessage.addListener((data, sender) => {
 
         // No need to check if the page isn't an article
         if(
-            (pageTitle.slice(0, 5) == "Talk:") ||
-            (pageTitle.slice(0, 5) == "User:") ||
+            (pageTitle.slice(0, 5)  == "Talk:") ||
+            (pageTitle.slice(0, 5)  == "User:") ||
             (pageTitle.slice(0, 10) == "User talk:") ||
             (pageTitle.slice(0, 10) == "Wikipedia:") ||
-            (pageTitle.slice(0, 8) == "Special:")
+            (pageTitle.slice(0, 8)  == "Special:") ||
+            (pageTitle              == "Main Page")
         ) {return;}
 
         var xhr = new XMLHttpRequest();
@@ -97,7 +93,10 @@ browser.runtime.onMessage.addListener((data, sender) => {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send("{}");
         xhr.onload = function () {
-            addPopup(JSON.parse(this.responseText)["Probability"]);
+            var prob = JSON.parse(this.responseText)["Probability"];
+            if(prob > data.minScore) {
+                addPopup(prob);
+            }
         }
     }
 })
