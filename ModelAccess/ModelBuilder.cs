@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
+using Microsoft.ML.Trainers.LightGbm;
 using MLModel.DataModels;
 
 namespace ModelAccess
@@ -50,10 +51,10 @@ namespace ModelAccess
         {
             // Data process configuration with pipeline data transformations 
             var dataProcessPipeline = mlContext.Transforms.Text.FeaturizeText("Extracts_tf", "Extracts")
-                                      .Append(mlContext.Transforms.CopyColumns("Features", "Extracts_tf"));
+                .Append(mlContext.Transforms.CopyColumns("Features", "Extracts_tf"));
 
             // Set the training algorithm 
-            var trainer = mlContext.BinaryClassification.Trainers.LightGbm(labelColumnName: "Category", featureColumnName: "Features");
+            var trainer = mlContext.BinaryClassification.Trainers.LightGbm(new LightGbmBinaryTrainer.Options() { NumberOfIterations = 200, LearningRate = 0.1290465f, NumberOfLeaves = 73, MinimumExampleCountPerLeaf = 50, UseCategoricalSplit = false, HandleMissingValue = true, MinimumExampleCountPerGroup = 100, MaximumCategoricalSplitPointCount = 32, CategoricalSmoothing = 1, L2CategoricalRegularization = 10, Booster = new GradientBooster.Options() { L2Regularization = 0, L1Regularization = 0 }, LabelColumnName = "Category", FeatureColumnName = "Features" });
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
             return trainingPipeline;
