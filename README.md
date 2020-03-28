@@ -22,6 +22,8 @@ The second part of this repository is a Firefox extension, which has three main 
  - A popup that opens when you click the icon in the browser toolbar and allows you to change the settings
  - A content script that sends a POST to the API to get the score of the article and if necessary add the popup (the notification that the page is promotional, not the above item) to the page
 
+There is also a Chrome extension that is mostly the same as the Firefox extension, there's just a few small tweaks I made to get it working in Chrome.
+
 ## Usage
 
 The GitHub repository includes a pre-trained model, but if you would like to re-train it, follow these steps:
