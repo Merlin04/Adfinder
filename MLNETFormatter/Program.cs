@@ -21,9 +21,29 @@ namespace MLNETFormatter
             
             foreach (KeyValuePair<string, string> filePath in fm.GetFilesList())
             {
-                file.WriteLine((filePath.Value == "Promotional" ? "1" : "0") + "\t" + fm.GetArticleExtracts(filePath.Key)
-                    .Replace("\n", " ")
-                    .Replace("\t", ""));
+                file.WriteLine((filePath.Value == "Promotional" ? "1" : "0") + "\t" +
+                               ProcessExtracts(fm.GetArticleExtracts(filePath.Key))
+                                   .Replace("\n", " ")
+                                   .Replace("\t", ""));
+            }
+        }
+
+        static string ProcessExtracts(string extracts)
+        {
+            try
+            {
+                string[] sectionSplit = extracts.Split("\n\n\n");
+                return sectionSplit[0] + "   " + sectionSplit[1] + "   " + sectionSplit[2] + "   " + sectionSplit[3] +
+                       "   " + sectionSplit[4];
+            }
+            catch (Exception ex)
+            {
+                if (ex is IndexOutOfRangeException)
+                {
+                    return extracts;
+                }
+
+                throw;
             }
         }
     }
