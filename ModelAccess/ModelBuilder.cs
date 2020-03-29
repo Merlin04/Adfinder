@@ -17,7 +17,7 @@ namespace ModelAccess
 {
     public static class ModelBuilder
     {
-        private static string TRAIN_DATA_FILEPATH = @"../../../../MLModel/dataset-2020-03-19T20:45:10.tsv";
+        private static string TRAIN_DATA_FILEPATH = @"../../../../MLModel/dataset.tsv";
         private static string MODEL_FILEPATH = @"../../../../MLModel/MLModel.zip";
 
         // Create MLContext to be shared across the model creation workflow objects 
