@@ -24,6 +24,8 @@ The second part of this repository is a Firefox extension, which has three main 
 
 There is also a Chrome extension that is mostly the same as the Firefox extension, there's just a few small tweaks I made to get it working in Chrome.
 
+There is another branch, `MLNETFormatter-shorten-articles`, that includes a version of MLNETFormatter that saves only the first 3 sections of articles and a trained model using the dataset that this produced. I tried this in hopes that it could improve the accuracy, but it did not help, in some cases making it worse.
+
 ## Usage
 
 The GitHub repository includes a pre-trained model, but if you would like to re-train it, follow these steps:
