@@ -64,7 +64,7 @@ function addPopup(score) {
     closeScript.innerText = "" +
         "var sr = document.getElementById('adfinder-shadow-container').shadowRoot;" +
         "$(sr).ready(() => {" +
-        "    setTimeout(() => {$(sr.getElementById('adfinder-popup')).transition('fade');}, 200);" +
+        "    setTimeout(() => {$(sr.getElementById('adfinder-popup')).transition('fade');}, 500);" +
         "    sr.getElementById('closeButton').addEventListener('click', () => {" +
         "        $(sr.getElementById('adfinder-popup')).transition({animation: 'fade', onComplete: () => {document.getElementById('adfinder-shadow-container').outerHTML = '';}});" +
         "    });" +
