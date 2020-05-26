@@ -2,7 +2,7 @@
 
 Tool to identify Wikipedia articles that might have a promotional bias.
 
-![.NET Core](https://github.com/Merlin04/Adfinder/workflows/.NET%20Core/badge.svg) [![Firefox extension](https://img.shields.io/badge/Firefox-Get%20add--on-orange?logo=mozilla-firefox)](https://addons.mozilla.org/en-US/firefox/addon/adfinder/)
+![.NET Core](https://github.com/Merlin04/Adfinder/workflows/.NET%20Core/badge.svg)
 
 ![Screenshot of popup](https://github.com/Merlin04/Adfinder/raw/master/FirefoxExtension/popup.png)
 
